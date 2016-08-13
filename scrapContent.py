@@ -50,20 +50,21 @@ def HTML2Wiki (HTMLString,textSpreadRatio , title):
 	template = "<onlyinclude>'''Title''' ( [[Language]] '''???????? ??? ???''' )'Intro Piece'</onlyinclude>\n== Heading1 ==\nBody1\n\n== Heading2 ==\n\nBody2\n"
 	WikiString= HTMLString.split('<br/>');
 	#for count in range(len(WikiString)):
-		#print "======="+str(count)+"========="
-		#print WikiString[count];
+	#	print "======="+str(count)+"========="
+	#	print WikiString[count];
 	originalCount= 1;
 	numberofHeadings= len(WikiString)/textSpreadRatio;
 	#print "=====Number of Headings : " + str(numberofHeadings); 
 	OutputString= "<onlyinclude>'''Title''' ( [[Language]] '''???????? ??? ???''' )'"+WikiString[originalCount]+"'</onlyinclude>\n"
 	OutputString= OutputString.replace("Title",title)
 	print OutputString;
-	for count in range (1, numberofHeadings):
+	for count in range (1, numberofHeadings + 1):
 		OutputString = OutputString + "\n== Heading"+str(count)+" ==\n"
-		for itr in range (1, textSpreadRatio):
+		for itr in range (0, textSpreadRatio):
+			originalCount= originalCount + 1;
+			#print "Original Count is :" , originalCount
 			try:
 				OutputString = OutputString + WikiString[originalCount];
-				originalCount= originalCount + itr;
 			except IndexError:					
 					OutputString=OutputString+"\n== List1 ==\n\nListBody1\n\n* ListElement1\n* ListElement2\n\n== NoBodyList1 ==\n* NoBodyListElement1\n* NoBodyListElement2\n* NoBodyListElement1\n\n\n[[Category:Tag1]]\n"
 					return OutputString;

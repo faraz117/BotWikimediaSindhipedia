@@ -29,7 +29,7 @@ def create_page(pageName):
 	else:
 		print "Creating Page " , pageName
 		print page.can('edit')
-		text= scrap.scrapDynamic(pageName ,5); # result comes in sections so you have to define textspreadratio
+		text= scrap.scrapDynamic(pageName ,6); # result comes in sections so you have to define textspreadratio
 		#print "Generator Output: ",text 
 		page.save(text, 'Edit Summary')
 		print 'Created Page' , pageName ,'!!'
